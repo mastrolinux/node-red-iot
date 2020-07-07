@@ -4,6 +4,7 @@ The idea of the repo is to apply a single patch on top of the latest version of
 Node-RED source code, then add some config vars and deploy it to Heroku.
 
 Steps are:
+
 1. clone this repo
 ```
     git clone https://github.com/mastrolinux/node-red-iot.git
@@ -21,12 +22,18 @@ Steps are:
 ```
     git am < ../node-red-iot/*.patch
 ``` 
+
 4. Install Node-RED
 
     npm install
     npm run build
 
-5. Set env vars and start Node-RED, create a `.env` file in your current dir with some info of
+5. Create a password with Node-RED Admin
+```
+    ./node_modules/node-red-admin/node-red-admin.js hash-pw
+```
+
+6. Set env vars and start Node-RED, create a `.env` file in your current dir with some info of
 **your choice** and then export the vars
 
 ```
@@ -37,7 +44,8 @@ Steps are:
     export $(cat .env | xargs)
     npm start
 ```
-6. (Optional, suggested) Deploy it on Heroku
+
+7. (Optional, suggested) Deploy it on Heroku
 
 ```
     heroku login
